@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import {navData} from '../data/navData'
+import logomark from '../../public/assets/logomark.png'
+import { Icon } from 'astro-icon/components';
+---
+
+<nav>
+    <ul>
+        {
+        navData.map ((i) =>(
+        <li>
+            {i.name === "Home" ? (
+                <a href={i.href} aria-label="Go Home">
+                    <Image 
+                        alt="" 
+                        src={logomark} 
+                        width="80" 
+                        format='avif' 
+                        aria-hidden="true"
+                        style="flex-shrink: 0"/>
+                </a>
+            ): (
+                <a href={i.href} data-noMobile>{i.name}</a>
+            )}
+        </li>
+        ))
+        }
+    </ul>
+    <button id="mobile-nav-btn" aria-label="Open mobile nav">
+        <Icon name="hamburger" aria-hidden="true" width={30} height={50}/>
+    </button>
+    <p id="mobile-nav">yo</p>
+
+</nav>
+
+<style>
+    #mobile-nav-btn {
+        display: none
+    }
+    #mobile-nav {
+        display: none
+    }
+    button{
+        background: none;
+    }
+    ul {
+        list-style: none;
+        display: flex;
+        width: 100%;
+        max-width: 1200px;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--size-2);
+        padding: 0;
+    }
+    [data-noMobile]{
+        display: none;
+    }
+    [aria-label="Go Home"]{
+        margin-inline: 1rem;
+    }
+    li{
+        font-size: var(--font-size-0);
+        text-transform: uppercase;
+        letter-spacing: var(--font-letterspacing-2);
+    }
+    a{
+        color: var(--clr-text);
+        text-decoration: none;
+    }
+
+    @media screen and (min-width: 780px) {
+        [data-noMobile]{
+            display: block;
+        }
+        ul {
+        justify-content: center;
+    }
+    }
+</style>
+
+<script>
+    const mobileNavBn = document.querySelector("#mobile-nav-btn");
+
+    const mobilNav = document.querySelector("#mobile-nav") as HTMLParagraphElement;
+
+    mobileNavBn?.addEventListener("click", (e) => {
+        mobilNav.style.display = "block";
+    })
+
+</script>

@@ -1,0 +1,52 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+  --clr-text: var(--gray-9)
+}
+img{
+  display: block;
+  max-width: 100%;
+}
+
+svg{
+  pointer-events: none;
+}
+
+body{
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: rgb(237, 201, 134);
+  color: var(--clr-text);
+}
+
+.grid--xs{
+  display: grid;
+  gap: var(--size-1);
+}
+.grid--sm{
+  display: grid;
+  gap: var(--size-2);
+}
+.grid--md{
+  display: grid;
+  gap: var(--size-4);
+}
+.grid--lg{
+  display: grid;
+  gap: var(--size-6);
+}
+.grid--xl{
+  display: grid;
+  gap: var(--size-8);
+}
+.grid--xxl{
+  display: grid;
+  gap: var(--size-10);
+}

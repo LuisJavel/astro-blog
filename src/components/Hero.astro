@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+
+import heroImage from "../../public/assets/hero.jpg"
+---
+
+<sectiona aria-label="Hero Section">
+    <Image alt="shop storefront" src={heroImage} width="1200" format='avif' class="hero-image" />
+    <div class="grid--md">
+        <div class="grid--xs">
+            <h1>La Galeria de Cafe de Roselia</h1>
+            <small>Simple. sostenible sin quimico</small>
+        </div>
+        <p>Bar pequeño pero con muchos cafes y potrees frescos y asu medida</p>
+    </div>
+</sectiona>
+
+<style>
+    section{
+        display: grid;
+        max-height: 600px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .hero-image{
+        grid-area: 1 / 1 / -1 / -1;
+    }
+</style>
